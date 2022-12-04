@@ -19,6 +19,9 @@ pipeline {
             }
         }
         stage('Execute Smoke Tests') {
+            when {
+                branch 'main'
+            }
             steps {
                 sh '''
                     echo "Executing Smoke Tests"
@@ -28,7 +31,7 @@ pipeline {
         stage('Deploy to Production Environemt') {
             steps {
                 sh '''
-                    docker compose up -d
+                    docker compose --profile prod up -d
                 '''
             }
         }
