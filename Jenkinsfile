@@ -29,6 +29,9 @@ pipeline {
             }
         }
         stage('Deploying to production environemt') {
+            when {
+                branch 'main'
+            }
             steps {
                 sh '''
                     docker compose --profile prod up -d
