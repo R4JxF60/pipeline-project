@@ -1,6 +1,6 @@
 pipeline {
     agent { 
-        name 'zorin' 
+        label 'slave' 
     }
     stages {
         stage("Update Node") {
