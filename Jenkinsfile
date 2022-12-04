@@ -3,7 +3,7 @@ pipeline {
         label 'linux' 
     }
     stages {
-        stage('Docker tools versions') {
+        stage('Docker tools checking') {
             steps {
                 sh '''
                     docker --version
@@ -11,17 +11,24 @@ pipeline {
                 '''
             }
         }
-        stage('build') {
+        stage('Build & Execute Tests') {
             steps {
                 sh '''
                     docker compose -f compose.yaml -f compose.prod.yaml build
                 '''
             }
         }
-        stage('Deploy') {
+        stage('Execute Smoke Tests') {
             steps {
                 sh '''
-                    docker compose -f compose.yaml -f compose.prod.yaml up -d
+                    echo "Executing Smoke Tests"
+                '''
+            }
+        }
+        stage('Deploy to Production Environemt') {
+            steps {
+                sh '''
+                    docker compose up -d
                 '''
             }
         }

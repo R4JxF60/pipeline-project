@@ -1,10 +1,9 @@
 services:
-  app:
-    image: r4jxf60/pipelineapp
+  api:
+    image: r4jxf60/prod_pipelineapi
     ports:
-      - "9001:9001"
+      - "3001:3001"
     build:
       context: .
       args:
-        - PORT=9001
-    
+        - PORT=3001
