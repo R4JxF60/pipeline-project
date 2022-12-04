@@ -1,6 +1,6 @@
 pipeline {
-    agent {
-        label 'linux'
+    agent { 
+        label 'linux' 
     }
     stages {
         stage('Docker tools checking') {
@@ -12,6 +12,7 @@ pipeline {
             }
         }
         stage('Build & executing tests') {
+
             steps {
                 sh '''
                     docker compose build
@@ -26,6 +27,26 @@ pipeline {
             steps {
                 sh '''
                     docker compose --profile dev up -d
+                   '''
+            }
+        }
+        stage('Execute smoke tests') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh '''
+                    echo "Executing Smoke Tests"
+                '''
+            }
+        }
+        stage('Deploying to production environemt') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh '''
+                    docker compose --profile prod up -d
                 '''
             }
         }

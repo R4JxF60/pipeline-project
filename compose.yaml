@@ -9,3 +9,14 @@ services:
       - "9001:9001"
     profiles:
       - dev
+      
+  api-prod:
+    image: r4jxf60/prod_pipelineapi
+    ports:
+      - "3001:3001"
+    build:
+      context: .
+      args:
+        - PORT=3001
+    profiles:
+      - prod
