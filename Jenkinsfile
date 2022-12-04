@@ -14,7 +14,7 @@ pipeline {
         stage('Build & Execute Tests') {
             steps {
                 sh '''
-                    docker compose -f compose.yaml -f compose.prod.yaml build
+                    docker compose build
                 '''
             }
         }
