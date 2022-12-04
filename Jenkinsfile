@@ -4,11 +4,12 @@ pipeline {
     }
     stages {
         stage('Tooling versions') {
-        steps {
-            sh '''
-            docker --version
-            docker compose version
-            '''
+            steps {
+                sh '''
+                docker --version
+                docker compose version
+                '''
+            }
         }
     }
 }
