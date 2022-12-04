@@ -3,18 +3,25 @@ pipeline {
         label 'linux' 
     }
     stages {
-        stage('Tooling versions') {
+        stage('Docker tools versions') {
             steps {
                 sh '''
-                docker --version
-                docker compose version
+                    docker --version
+                    docker compose version
                 '''
             }
         }
-        stage('Node') {
+        stage('build') {
             steps {
                 sh '''
-                node -v
+                    docker compose -f compose.yaml -f compose.prod.yaml build
+                '''
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh '''
+                    docker compose -f compose.yaml -f compose.prod.yaml up -d
                 '''
             }
         }
