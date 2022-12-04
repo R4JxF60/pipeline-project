@@ -11,5 +11,12 @@ pipeline {
                 '''
             }
         }
+        stages('Node') {
+            steps {
+                sh '''
+                nvm use --lts
+                '''
+            }
+        }
     }
 }
