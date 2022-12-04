@@ -11,14 +11,14 @@ pipeline {
                 '''
             }
         }
-        stage('Build & Execute Tests') {
+        stage('Build & execute tests') {
             steps {
                 sh '''
                     docker compose build
                 '''
             }
         }
-        stage('Execute Smoke Tests') {
+        stage('Execute smoke tests') {
             when {
                 branch 'main'
             }
@@ -28,7 +28,7 @@ pipeline {
                 '''
             }
         }
-        stage('Deploy to Production Environemt') {
+        stage('Deploying to production environemt') {
             steps {
                 sh '''
                     docker compose --profile prod up -d
