@@ -1,5 +1,5 @@
 services:
-  api:
+  api-prod:
     image: r4jxf60/prod_pipelineapi
     ports:
       - "3001:3001"
@@ -7,3 +7,5 @@ services:
       context: .
       args:
         - PORT=3001
+    profiles:
+      - prod
