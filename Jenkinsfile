@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'host_slave'
+        label 'linux'
     }
     stages {
         stage('Docker tools checking') {
