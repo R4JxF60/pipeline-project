@@ -11,6 +11,19 @@ pipeline {
                 '''
             }
         }
-        stage('Executing Tests')
+        stage('Executing Tests') {
+            steps {
+                sh '''
+                    docker compose build
+                '''
+            }
+        }
+        stage('Deploying to QA environment') {
+            steps {
+                sh '''
+                    docker compose -f compose.yaml -f compose.dev.yaml up -d
+                '''
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 services:
   devapp:
-    image: r4jxf60/dev_pipelineapp
+    image: r4jxf60/dev_pipelineapi
     build: 
       context: .
       args:
