@@ -1,7 +1,9 @@
 services:
   devapp:
     image: r4jxf60/dev_pipelineapp
-    args:
-      - PORT=9001
+    build: 
+      context: .
+      args:
+        - PORT=9001
     ports:
-      - 9001:9001
+      - "9001:9001"
