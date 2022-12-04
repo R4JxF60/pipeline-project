@@ -14,7 +14,7 @@ pipeline {
         stage('Node') {
             steps {
                 sh '''
-                nvm use --lts
+                node -v
                 '''
             }
         }
