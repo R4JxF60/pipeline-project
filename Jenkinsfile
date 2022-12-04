@@ -11,11 +11,23 @@ pipeline {
                 '''
             }
         }
-        stage('Build & execute tests') {
+        stage('Build & executing tests') {
+
             steps {
                 sh '''
                     docker compose build
                 '''
+            }
+        }
+        stage('Deploying to QA environment') {
+            when {
+                branch 'dev'
+            }
+
+            steps {
+                sh '''
+                    docker compose --profile dev up -d
+                   '''
             }
         }
         stage('Execute smoke tests') {
