@@ -17,3 +17,4 @@ COPY application.js .
 COPY server.js .
 RUN npm run build
 RUN npm run test
+ENTRYPOINT [ "npm", "run", "start" ]

@@ -11,7 +11,7 @@ pipeline {
                 '''
             }
         }
-        stage('Executing Tests') {
+        stage('Build and executing tests') {
             steps {
                 sh '''
                     docker compose build
@@ -19,9 +19,13 @@ pipeline {
             }
         }
         stage('Deploying to QA environment') {
+            when {
+                branch 'dev'
+            }
+
             steps {
                 sh '''
-                    docker compose -f compose.yaml -f compose.dev.yaml up -d
+                    docker compose --profile dev up -d
                 '''
             }
         }

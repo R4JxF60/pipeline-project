@@ -1,7 +1,0 @@
-services:
-  devapp:
-    image: r4jxf60/dev_pipelineapi
-    entrypoint:
-      - npm
-      - run
-      - start

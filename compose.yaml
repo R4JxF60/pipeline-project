@@ -1,5 +1,5 @@
 services:
-  devapp:
+  api-development:
     image: r4jxf60/dev_pipelineapi
     build: 
       context: .
@@ -7,3 +7,5 @@ services:
         - PORT=9001
     ports:
       - "9001:9001"
+    profiles:
+      - dev
