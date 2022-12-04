@@ -6,9 +6,14 @@ The project consists of simple node based application and **multi-branch** pipel
 
 **Tabel of Contents** 
 
-[TOCM]
-
-[TOC]
+- [CI/CD PIPELINE PROJECT](#cicd-pipeline-project)
+- [TL;DR](#tldr)
+- [Environment Setup](#environment-setup)
+  - [Prerequisites](#prerequisites)
+  - [Setup Jenkins](#setup-jenkins)
+    - [Create a bridge network](#create-a-bridge-network)
+    - [Start the Jenkins node](#start-the-jenkins-node)
+    - [Connect to a running docker container from the host](#connect-to-a-running-docker-container-from-the-host)
 
 # Environment Setup
 
@@ -31,7 +36,7 @@ You need to have Docker Engine install in your environment. Follow the Docker [i
 
 Now visit the [localhost:8080](http://localhost:8080) and wait until Jenkins start. When the Jenkins start, it will show window to enter the initial credentials for the root before login. You can find this credentials inside the `/var/jenkins_home/secrets/` directory in the Jenkins container. To grab the credentials follow up the following steps.
 
-####Connect to a running docker container from the host
+### Connect to a running docker container from the host
 
     docker exec -it pipeline_container bash
 
