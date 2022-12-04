@@ -3,14 +3,12 @@ pipeline {
         label 'any' 
     }
     stages {
-        stage("Update Node") {
+        stage('Tooling versions') {
+        steps {
             sh '''
-                nvm use --lts
+            docker --version
+            docker compose version
             '''
         }
-        stage("Tool versioning") {
-            sh 'node -v'
-        }
     }
-
 }
